@@ -20,6 +20,7 @@ Block on sight if any of these appear:
 - raw token string ending in `pump`
 - long hex-like crypto hash / contract string, especially `0x...`
 - handle/display name with `.bsc`, `XBT`, `BNB`, `0x`, `Crypto`
+- handle/display/bio with `eth`, `Ethereum`, `.eth`, or similar crypto identity markers should be treated as crypto-coded in moderation
 - trader / trading / airdrop-hunter identity in handle, display name, or bio is a strong crypto/noise signal
 - trader / trading / airdrop-hunter identity should trigger immediate profile-reply inspection
 - `degen` in handle, display name, or bio is a strong crypto/noise signal
@@ -54,6 +55,7 @@ Needs 2+ signals, or one very strong one:
 - if unsure: tiny account size raises suspicion. Very small follower count, weak history, and disposable-account shape should lower the bar for blocking.
 - if unsure: check profile bio. Coin/ticker flex (`$TSLA`, `$BTC`, `$ETH`, etc), memecoin identity, or obvious crypto self-branding should push the account into block territory fast.
 - AI-coded handle or bio plus generic policy/strategy talk with no specifics should push the account into block territory fast.
+- AI-coded plus ETH/crypto-coded identity plus a throwaway one-word mention (`Nice`, `Wow`, `Yes`, similar) should push the account into block territory fast.
 - strong pattern signal: same upbeat, generic, thread-detached reply style across unrelated accounts within minutes
 - strong pattern signal: templated compliment-bot voice: `Totally agree!`, `That sounds interesting!`, `Hope they consider it!`, `incredibly inspiring`
 - medium pattern signal: generic AI/agent-infra praise with no specifics: `proper agent infra`, `meta-solution`, `brilliant use`, `powerful combo`
@@ -74,6 +76,7 @@ Prefer mute over block when:
 - the content is mainly in languages other than English or German
 - the mention is low-value for your workflow, but not hostile / crypto / obvious AI
 - profile replies stay human and specific, even if the content is not useful to you
+- `grok`-style annoying nicknames or mildly irritating AI/crypto branding are present, but the account is not actually bad enough to block
 
 ## Small-account bias
 
@@ -121,6 +124,7 @@ If somewhat unsure and the account is small: be strict.
 - `@PANONYGroup`: noisy account class, but this mention was not enough on its own.
 - `@JimmyPage6656`: low-signal style, but still a concrete feature ask.
 - `@AdamAutomates`: AI-handle, but not slop by itself.
+- `@HashHustleHQ`: grok-ish annoying nickname / branding, but not actually bad enough to block. Mute bucket.
 
 ## Practical default
 
@@ -152,6 +156,8 @@ If tiny account + empty hostility: block.
 
 If AI-coded handle + generic strategy/policy filler: block.
 
+If AI-coded plus ETH/crypto-coded identity and the mention is just a one-word drive-by: block.
+
 If tiny account + non-English/non-German human chatter: mute.
 
 ## Borderline workflow
@@ -173,6 +179,7 @@ If one tweet feels AI-ish but not enough alone:
 - if the trigger was a community link, specifically look for memecoin names, cashtags, contract strings, wallet spam, token promotion, or generic crypto-reply sludge in recent replies
 - if the trigger was a sale/domain post, specifically look for repeated `is for sale`, `DM if interested`, and founder/project-tagging across recent replies
 - if the trigger was trader / trading / airdrop identity, specifically look for `pump` strings, wallet/CA hashes, cashtags, memecoin replies, or degen-chatter in recent replies
+- if the trigger was AI/ETH-coded identity plus a one-word reply, check whether the profile is mostly crypto/AI noise rather than real conversation; if yes, block
 - if crypto-coded or AI-coded handle and the mention itself is low-signal, assume stricter review: profile replies before giving benefit of the doubt
 - if the pattern is stable across multiple replies: block
 - if it is only one awkward tweet: do not block yet
