@@ -24,9 +24,12 @@ Block on sight if any of these appear:
 - crypto-coded handle/display name plus a silly low-signal question: logo bait, mascot bait, `is this your logo`, `is X a mascot`, `what is this logo`, similar empty prompts
 - if someone asks for a logo: investigate profile replies immediately
 - if unsure, profile bio promotes coins, tickers, memecoins, token wealth, or crypto identity markers: block
+- if someone posts an X community link in your mentions: be suspicious immediately
+- domain-for-sale / squatter spam in mentions: `for sale`, `domain for sale`, `DM if interested`, repeated sale pings at founders/projects
 - tiny or low-cred account plus mild hostile bait: `stop lying`, `bro`, empty accusation, drive-by contempt with no substance
 - repeated `Is MOLTY a mascot?` / mascot-style bait
 - image-only ping with no real text
+- community-link ping with no real text
 - direct guilt-bait agent roleplay
 - repeated crisis-begging / family-emergency money pleas across replies
 - direct abuse like `fucking drone` / similar contempt bait
@@ -91,6 +94,8 @@ If somewhat unsure and the account is small: be strict.
 - `@sanjaygpts` (`$anjay`): tiny account, crypto/AI-coded naming, low-substance hostility: `stop lying sir`.
 - `@AIHacksByMK`: AI-coded handle, generic anti-evasion / strategy talk, and repeated polished no-detail replies across unrelated threads.
 - `@Brian_Degens`: `degen` identity plus DM-bait mention and cashtag / degen-reply pattern.
+- `@RzaINF`: community-link ping in mentions; profile replies contained `$SlACRAWL`, a memecoin address, and other crypto chatter. Community post triggered review; profile convicted.
+- `@AiDomainName`: `Domains For Sale` account; repeated `is for sale` pings at project/founder accounts; link/image sales spam, not conversation.
 - `@theonomix`: asked for a logo; profile replies were memecoin / fundraiser chatter. Logo ask triggered the profile check; profile convicted.
 - `@SammmXBT`: crypto-coded handle + zero-value reply.
 - `@0xJapee`: crypto-coded handle + nonsense low-signal reply.
@@ -118,6 +123,10 @@ If somewhat unsure and the account is small: be strict.
 ## Practical default
 
 If crypto: block.
+
+If they post a community link and their profile tweets/replies contain crypto shit: block.
+
+If they are a domain squatter / `Domains For Sale` account doing repeated sale pings in your mentions: block.
 
 If `degen` appears and the mention is low-value or crypto-adjacent: block.
 
@@ -157,6 +166,8 @@ If one tweet feels AI-ish but not enough alone:
 - look for repeated generic praise, shallow paraphrase, fake insight, or canned agreement across unrelated topics
 - if tiny account is mainly non-English/non-German but reads human and technically specific, prefer mute over block
 - if the trigger was a logo question, specifically look for memecoin, fundraiser, token, wallet, or crypto-chatter patterns in recent replies
+- if the trigger was a community link, specifically look for memecoin names, cashtags, contract strings, wallet spam, token promotion, or generic crypto-reply sludge in recent replies
+- if the trigger was a sale/domain post, specifically look for repeated `is for sale`, `DM if interested`, and founder/project-tagging across recent replies
 - if crypto-coded or AI-coded handle and the mention itself is low-signal, assume stricter review: profile replies before giving benefit of the doubt
 - if the pattern is stable across multiple replies: block
 - if it is only one awkward tweet: do not block yet
