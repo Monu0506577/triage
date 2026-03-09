@@ -20,6 +20,7 @@ Block on sight if any of these appear:
 - raw token string ending in `pump`
 - long hex-like crypto hash / contract string, especially `0x...`
 - handle/display name with `.bsc`, `XBT`, `BNB`, `0x`, `Crypto`
+- `degen` in handle, display name, or bio is a strong crypto/noise signal
 - crypto-coded handle/display name plus a silly low-signal question: logo bait, mascot bait, `is this your logo`, `is X a mascot`, `what is this logo`, similar empty prompts
 - if someone asks for a logo: investigate profile replies immediately
 - if unsure, profile bio promotes coins, tickers, memecoins, token wealth, or crypto identity markers: block
@@ -61,6 +62,14 @@ Do not block for:
 - awkward English without other spam/slop signals
 - real product questions, even if phrased clumsily
 
+Prefer mute over block when:
+
+- the account seems human
+- the account is tiny
+- the content is mainly in languages other than English or German
+- the mention is low-value for your workflow, but not hostile / crypto / obvious AI
+- profile replies stay human and specific, even if the content is not useful to you
+
 ## Small-account bias
 
 If somewhat unsure and the account is small: be strict.
@@ -81,6 +90,7 @@ If somewhat unsure and the account is small: be strict.
 - `@CryptoKobe92`: crypto-coded handle plus silly logo question. No value; just another crypto-logo gremlin.
 - `@sanjaygpts` (`$anjay`): tiny account, crypto/AI-coded naming, low-substance hostility: `stop lying sir`.
 - `@AIHacksByMK`: AI-coded handle, generic anti-evasion / strategy talk, and repeated polished no-detail replies across unrelated threads.
+- `@Brian_Degens`: `degen` identity plus DM-bait mention and cashtag / degen-reply pattern.
 - `@theonomix`: asked for a logo; profile replies were memecoin / fundraiser chatter. Logo ask triggered the profile check; profile convicted.
 - `@SammmXBT`: crypto-coded handle + zero-value reply.
 - `@0xJapee`: crypto-coded handle + nonsense low-signal reply.
@@ -109,6 +119,8 @@ If somewhat unsure and the account is small: be strict.
 
 If crypto: block.
 
+If `degen` appears and the mention is low-value or crypto-adjacent: block.
+
 If strongly derogatory: block.
 
 If repetitive mascot spam: block.
@@ -127,6 +139,8 @@ If tiny account + empty hostility: block.
 
 If AI-coded handle + generic strategy/policy filler: block.
 
+If tiny account + non-English/non-German human chatter: mute.
+
 ## Borderline workflow
 
 If one tweet feels AI-ish but not enough alone:
@@ -135,11 +149,13 @@ If one tweet feels AI-ish but not enough alone:
 - read ~8-15 recent replies, not just one
 - check follower/following shape too
 - check profile bio too
+- check language fit too
 - if follower count is tiny and the account also looks disposable or low-effort, increase block weight a lot
 - if follower count is tiny and the mention is even somewhat suspicious, default to block
 - if bio contains coin/ticker promotion or crypto identity signaling, treat that as a strong extra block signal
 - especially suspicious: very low followers plus high following, very new account, low-effort bio, low-value replies
 - look for repeated generic praise, shallow paraphrase, fake insight, or canned agreement across unrelated topics
+- if tiny account is mainly non-English/non-German but reads human and technically specific, prefer mute over block
 - if the trigger was a logo question, specifically look for memecoin, fundraiser, token, wallet, or crypto-chatter patterns in recent replies
 - if crypto-coded or AI-coded handle and the mention itself is low-signal, assume stricter review: profile replies before giving benefit of the doubt
 - if the pattern is stable across multiple replies: block
