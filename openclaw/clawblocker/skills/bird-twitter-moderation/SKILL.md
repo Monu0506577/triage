@@ -9,6 +9,11 @@ Primary review skill for X mention triage.
 
 Use this before block/mute decisions.
 
+Runbook owns mention fetching and cache warmup.
+
+- do not override a runbook that already specifies `birdclaw` for mentions fetch
+- use this skill for review, context, and live verify
+
 Binary:
 
 ```bash

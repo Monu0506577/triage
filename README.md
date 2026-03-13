@@ -27,6 +27,7 @@ The first 2 share one OpenClaw agent/workspace:
 - one repo checkout inside that workspace
 - two runbooks
 - separate state/audit files per cron
+- twitter moderation also doubles as the `birdclaw` mention-cache warmer every 10 minutes; no second cache cron needed
 
 The block digest stays separate because it is a simple daily mailer over the moderation audit log.
 
@@ -76,6 +77,7 @@ Source-of-truth rule checkout:
 - timeout: `360s`
 - delivery: `none`
 - runbook: `jobs/twitter-moderation.md`
+- also warms `birdclaw` mention cache before triage and records verified block/mute actions back into local SQLite
 
 Message:
 
@@ -114,6 +116,7 @@ Run one clawblocker pass now using ~/.openclaw/workspace-clawblocker/jobs/email-
 
 ### Twitter moderation
 
+- `birdclaw`
 - `bird`
 - optional fallback: `bird-gui`
 - active auth/cookies for X
@@ -121,7 +124,14 @@ Run one clawblocker pass now using ~/.openclaw/workspace-clawblocker/jobs/email-
 Expected binary path in templates:
 
 ```bash
+$HOME/Projects/birdclaw
 $HOME/Projects/bird/bird
+```
+
+Expected runtime for `birdclaw` CLI today:
+
+```bash
+fnm exec --using 25.8.1 pnpm cli ...
 ```
 
 ### Email triage / digest
